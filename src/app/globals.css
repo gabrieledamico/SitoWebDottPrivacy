@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --color-paper: #faf8f4;
+  --color-paper-dim: #f1ede4;
+  --color-ink: #0e1a2b;
+  --color-ink-2: #16263d;
+  --color-ink-3: #24374f;
+  --color-line: #ddd6c7;
+  --color-line-dark: #2c3e57;
+  --color-amber: #d98c2b;
+  --color-amber-dim: #f2d9b3;
+  --color-teal: #0f8a82;
+  --color-teal-dim: #cfe9e6;
+  --color-body: #2c2a25;
+  --color-muted: #5c584d;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-ink-3: var(--color-ink-3);
+  --color-line: var(--color-line);
+  --color-line-dark: var(--color-line-dark);
+  --color-amber: var(--color-amber);
+  --color-amber-dim: var(--color-amber-dim);
+  --color-teal: var(--color-teal);
+  --color-teal-dim: var(--color-teal-dim);
+  --color-body: var(--color-body);
+  --color-muted: var(--color-muted);
+
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
+
+  --container-content: 72rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(247, 245, 240, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(247, 245, 240, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up {
+    animation: fade-up 0.6s ease-out both;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
