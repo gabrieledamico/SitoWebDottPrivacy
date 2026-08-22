@@ -18,8 +18,16 @@ export type TdbSlotRow = {
   claimed_at: string | null;
 };
 
+/**
+ * Stringa di connessione al database. I provider collegati a Vercel usano nomi
+ * diversi: Neon inietta DATABASE_URL, Supabase e Vercel Postgres POSTGRES_URL.
+ */
+function connectionString() {
+  return process.env.DATABASE_URL || process.env.POSTGRES_URL || "";
+}
+
 export function isDatabaseConfigured() {
-  return Boolean(process.env.DATABASE_URL);
+  return connectionString().length > 0;
 }
 
 // Un solo pool per processo: le funzioni serverless riusano il modulo tra
@@ -27,15 +35,15 @@ export function isDatabaseConfigured() {
 const globalForPool = globalThis as typeof globalThis & { tdbPool?: Pool };
 
 function getPool() {
-  const connectionString = process.env.DATABASE_URL;
-  if (!connectionString) {
+  const url = connectionString();
+  if (!url) {
     throw new Error(
       "DATABASE_URL non configurata: la pagina delle adesioni non può funzionare."
     );
   }
   if (!globalForPool.tdbPool) {
     globalForPool.tdbPool = new Pool({
-      connectionString,
+      connectionString: url,
       max: 3,
       idleTimeoutMillis: 10_000,
       connectionTimeoutMillis: 10_000,

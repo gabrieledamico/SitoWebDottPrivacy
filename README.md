@@ -54,7 +54,7 @@ d'ambiente (vedi `.env.example`; in locale usa `.env.local`):
 
 | Variabile | A cosa serve |
 | --- | --- |
-| `DATABASE_URL` | Postgres dove salvare le adesioni. Va bene qualsiasi provider (Neon, Vercel Postgres, Supabase, Railway). Su Vercel: Storage → crea il database → la variabile viene aggiunta da sola. |
+| `DATABASE_URL` (o `POSTGRES_URL`) | Postgres dove salvare le adesioni. Va bene qualsiasi provider (Neon, Vercel Postgres, Supabase, Railway). Su Vercel: Storage → crea il database → la variabile viene aggiunta da sola, con il nome che usa quel provider: il codice accetta entrambi i nomi. |
 | `TDB_PASSWORD` | Password condivisa con le famiglie. |
 | `TDB_ADMIN_PASSWORD` | Password della pagina di gestione. Diversa dalla precedente. |
 | `TDB_SESSION_SECRET` | Facoltativa: chiave di firma dei cookie di sessione. Se assente viene derivata dalle password. |
