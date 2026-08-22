@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import CTASection from "@/components/CTASection";
+import DualityScrollSequence from "@/components/chi-sono/DualityScrollSequence";
 
 export const metadata: Metadata = {
   title: "Chi sono — Gabriele D'Amico",
@@ -75,6 +76,8 @@ export default function ChiSonoPage() {
         title="Un profilo ibrido: normativa e verifica tecnica nella stessa persona."
         description="Sono Gabriele D'Amico, consulente privacy e cybersecurity, DPO esterno, ISO 27001 Lead Auditor e specialista NIS2. Non delego la parte tecnica a un terzo: la conduco io stesso."
       />
+
+      <DualityScrollSequence />
 
       <section>
         <Container className="py-20 lg:py-24">
