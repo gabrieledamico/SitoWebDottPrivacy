@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import AlberoAnimato from "@/components/terra-dei-bambini/AlberoAnimato";
 import Colline from "@/components/terra-dei-bambini/Colline";
+import EsciBottone from "@/components/terra-dei-bambini/EsciBottone";
 import SignupBoard from "@/components/terra-dei-bambini/SignupBoard";
 import TdbLogin from "@/components/terra-dei-bambini/TdbLogin";
 import { hasValidSession, isPasswordConfigured } from "@/lib/terra-dei-bambini/auth";
@@ -168,6 +169,7 @@ function Chiusura() {
         2026/2027 e vengono cancellati a raccolta conclusa. Alle altre famiglie è
         visibile il solo nominativo.
       </p>
+      <EsciBottone etichetta="Esci da questa pagina" />
     </div>
   );
 }

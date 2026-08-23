@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import AdminPanel from "@/components/terra-dei-bambini/AdminPanel";
+import EsciBottone from "@/components/terra-dei-bambini/EsciBottone";
 import TdbLogin from "@/components/terra-dei-bambini/TdbLogin";
 import { hasValidSession, isPasswordConfigured } from "@/lib/terra-dei-bambini/auth";
 import { isDatabaseConfigured } from "@/lib/terra-dei-bambini/db";
@@ -20,12 +21,19 @@ export default async function TerraDeiBambiniAdminPage() {
 
   return (
     <Container className="py-16 lg:py-20">
-      <p className="text-xs font-bold uppercase tracking-[0.16em] text-tenue">
-        La Terra dei Bambini · banca ore 2026/2027
-      </p>
-      <h1 className="mt-3 font-titolo text-3xl font-semibold tracking-tight text-bosco">
-        Gestione delle adesioni
-      </h1>
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-tenue">
+            La Terra dei Bambini · banca ore 2026/2027
+          </p>
+          <h1 className="mt-3 font-titolo text-3xl font-semibold tracking-tight text-bosco">
+            Gestione delle adesioni
+          </h1>
+        </div>
+        {authorized && (
+          <EsciBottone variante="evidente" etichetta="Esci e torna alle famiglie" />
+        )}
+      </div>
 
       <div className="mt-10">
         {!configured ? (
