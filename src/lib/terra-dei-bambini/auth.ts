@@ -17,10 +17,15 @@ export function cookieName(scope: TdbScope) {
   return COOKIE_NAMES[scope];
 }
 
+/**
+ * La password impostata fra le variabili d'ambiente. Spazi e a capo attorno al
+ * valore vengono ignorati: incollando la password nel pannello di Vercel è
+ * facile portarsi dietro uno spazio invisibile, e nessuno lo digiterebbe mai.
+ */
 export function configuredPassword(scope: TdbScope) {
-  return scope === "admin"
-    ? process.env.TDB_ADMIN_PASSWORD ?? ""
-    : process.env.TDB_PASSWORD ?? "";
+  const grezza =
+    scope === "admin" ? process.env.TDB_ADMIN_PASSWORD : process.env.TDB_PASSWORD;
+  return (grezza ?? "").trim();
 }
 
 export function isPasswordConfigured(scope: TdbScope) {
@@ -63,6 +68,9 @@ export async function hasValidSession(scope: TdbScope) {
 
 export function passwordMatches(scope: TdbScope, candidate: string) {
   const expected = configuredPassword(scope);
+  // Stessa indulgenza per chi digita: le tastiere dei telefoni aggiungono
+  // volentieri uno spazio dopo l'ultimo carattere.
+  candidate = candidate.trim();
   if (!expected) return false;
   // Confronto su digest di lunghezza fissa: evita di rivelare la lunghezza.
   return safeEqual(
