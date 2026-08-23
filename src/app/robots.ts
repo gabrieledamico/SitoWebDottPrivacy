@@ -1,12 +1,11 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site-config";
 
+// Nulla di quanto è ospitato qui va indicizzato.
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      disallow: "/",
     },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

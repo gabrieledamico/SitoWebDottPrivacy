@@ -13,15 +13,15 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0e1a2b",
+          background: "#0f8a82",
           borderRadius: 6,
-          color: "#d98c2b",
+          color: "#faf8f4",
           fontSize: 20,
           fontWeight: 700,
           fontFamily: "sans-serif",
         }}
       >
-        D
+        T
       </div>
     ),
     { ...size }

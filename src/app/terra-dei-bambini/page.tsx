@@ -153,10 +153,10 @@ function ComeFunziona() {
 function Chiusura() {
   return (
     <p className="border-t border-line pt-8 text-center text-xs leading-relaxed text-muted">
-      Pagina temporanea ospitata su dottprivacy.it per conto delle famiglie della
-      Terra dei Bambini. I dati raccolti (nominativo e numero di telefono) servono
-      solo a organizzare la banca ore 2026/2027 e vengono cancellati a raccolta
-      conclusa. Alle altre famiglie è visibile il solo nominativo.
+      Pagina temporanea per le famiglie della Terra dei Bambini. I dati raccolti
+      (nominativo e numero di telefono) servono solo a organizzare la banca ore
+      2026/2027 e vengono cancellati a raccolta conclusa. Alle altre famiglie è
+      visibile il solo nominativo.
     </p>
   );
 }

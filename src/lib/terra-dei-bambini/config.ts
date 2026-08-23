@@ -4,7 +4,8 @@
 
 export const tdbConfig = {
   slug: "terra-dei-bambini",
-  title: "La Terra dei Bambini — Banca ore 2026/2027",
+  // Il nome dell'associazione lo aggiunge il template del layout.
+  title: "Banca ore 2026/2027",
   subtitle: "Partecipazione attiva delle famiglie alla Terra",
   intro:
     "Ogni famiglia sceglie un gruppo in cui mettere a disposizione le proprie 20 ore di servizio. I posti si aggiornano in tempo reale: quando un gruppo è al completo non è più selezionabile.",
