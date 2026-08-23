@@ -46,7 +46,7 @@ export const tdbGroups: TdbGroup[] = [
     name: "Consiglio direttivo",
     capacity: 3,
     tasks: ["Gestione e indirizzo dell'associazione."],
-    preassigned: ["Samuele", "Andrea", "Leda"],
+    preassigned: ["Samuele Cattaneo", "Andrea Pozzoli", "Leda Citterio"],
   },
   {
     id: "cura-del-verde",

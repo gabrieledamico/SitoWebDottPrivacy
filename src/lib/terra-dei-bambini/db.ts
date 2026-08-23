@@ -126,10 +126,16 @@ async function initSchema() {
   for (const group of tdbGroups) {
     if (!group.preassigned?.length) continue;
     for (const [position, name] of group.preassigned.entries()) {
+      // Il posto viene riempito se libero, e il nome corretto se era già stato
+      // scritto da qui: così basta cambiare la configurazione per rinominare un
+      // membro. Un'adesione vera di una famiglia non viene mai sovrascritta.
       await query(
         `UPDATE tdb_slots
-         SET family_name = $3, preassigned = true, claimed_at = now()
-         WHERE group_id = $1 AND slot_index = $2 AND claimed_at IS NULL`,
+         SET family_name = $3,
+             preassigned = true,
+             claimed_at = COALESCE(claimed_at, now())
+         WHERE group_id = $1 AND slot_index = $2
+           AND (claimed_at IS NULL OR preassigned = true)`,
         [group.id, position + 1, name]
       );
     }
