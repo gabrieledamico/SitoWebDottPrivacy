@@ -49,6 +49,15 @@ function saveMyEntry(entry: MyEntry) {
   listeners.forEach((listener) => listener());
 }
 
+function dimenticaMyEntry() {
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // niente da fare: il promemoria sparirà comunque al prossimo giro
+  }
+  listeners.forEach((listener) => listener());
+}
+
 export default function SignupBoard({
   initialState,
 }: {
@@ -108,6 +117,15 @@ export default function SignupBoard({
     };
   }, [refresh]);
 
+  // Se l'adesione è stata liberata dalla gestione, il promemoria su questo
+  // browser non ha più senso: sparisce da solo al primo aggiornamento.
+  useEffect(() => {
+    if (!state || !myEntry) return;
+    const gruppo = state.groups.find((g) => g.id === myEntry.groupId);
+    const ancoraIscritta = gruppo?.members.some((m) => m.name === myEntry.familyName);
+    if (!ancoraIscritta) dimenticaMyEntry();
+  }, [state, myEntry]);
+
   function handleSuccess(groupId: string, familyName: string, next: TdbState) {
     saveMyEntry({ groupId, familyName });
     setState(next);
@@ -131,6 +149,13 @@ export default function SignupBoard({
               Registrata a nome di {myEntry.familyName}. Ogni famiglia occupa un solo
               posto: per una correzione scrivi a chi gestisce la raccolta.
             </p>
+            <button
+              type="button"
+              onClick={dimenticaMyEntry}
+              className="mt-2 text-xs font-bold text-salvia-scura underline underline-offset-2 transition hover:text-bosco"
+            >
+              Non è la tua adesione? Nascondi questo promemoria
+            </button>
           </div>
         </div>
       )}
