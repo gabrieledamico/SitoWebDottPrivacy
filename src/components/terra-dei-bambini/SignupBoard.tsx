@@ -362,7 +362,7 @@ function GroupCard({
               ? "Annulla"
               : group.alternative
                 ? "Scelgo il contributo economico"
-                : `Segnati${remaining <= 2 ? ` — ${remaining} ${remaining === 1 ? "posto" : "posti"}` : " in questo gruppo"}`}
+                : "Segnati in questo gruppo"}
           </button>
         )}
       </div>
