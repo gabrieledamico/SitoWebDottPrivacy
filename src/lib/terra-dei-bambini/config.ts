@@ -45,10 +45,7 @@ export const tdbGroups: TdbGroup[] = [
     id: "consiglio-direttivo",
     name: "Consiglio direttivo",
     capacity: 3,
-    tasks: [
-      "Gestione e indirizzo dell'associazione.",
-      "I posti di questo gruppo sono già stati assegnati.",
-    ],
+    tasks: ["Gestione e indirizzo dell'associazione."],
     preassigned: ["Samuele", "Andrea", "Leda"],
   },
   {

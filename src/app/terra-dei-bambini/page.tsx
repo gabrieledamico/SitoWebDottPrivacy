@@ -163,12 +163,6 @@ function Chiusura() {
   return (
     <div className="flex flex-col items-center gap-4 border-t border-linea pt-8">
       <SemeDecorativo />
-      <p className="max-w-2xl text-center text-xs leading-relaxed text-tenue">
-        Pagina temporanea per le famiglie della Terra dei Bambini. I dati raccolti
-        (nominativo e numero di telefono) servono solo a organizzare la banca ore
-        2026/2027 e vengono cancellati a raccolta conclusa. Alle altre famiglie è
-        visibile il solo nominativo.
-      </p>
       <EsciBottone etichetta="Esci da questa pagina" />
     </div>
   );
