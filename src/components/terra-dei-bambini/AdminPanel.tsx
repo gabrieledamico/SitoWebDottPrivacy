@@ -98,20 +98,20 @@ export default function AdminPanel() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <p className="text-sm text-muted">
+        <p className="text-sm text-tenue">
           {entries === null ? "Caricamento…" : `${total} adesioni registrate.`}
         </p>
         <div className="flex flex-wrap gap-3">
           <button
             type="button"
             onClick={refresh}
-            className="rounded-md border border-line px-4 py-2 text-sm font-semibold text-ink-3 transition hover:border-ink/30"
+            className="rounded-full border border-linea px-4 py-2 text-sm font-semibold text-testo transition hover:border-salvia"
           >
             Aggiorna
           </button>
           <a
             href="/api/terra-dei-bambini/admin/export"
-            className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-paper transition hover:bg-ink-2"
+            className="rounded-full bg-bosco px-4 py-2 text-sm font-semibold text-bianco transition hover:bg-salvia-scura"
           >
             Scarica CSV
           </a>
@@ -119,12 +119,12 @@ export default function AdminPanel() {
       </div>
 
       {error && (
-        <p className="rounded-xl border border-amber/40 bg-amber-dim px-5 py-4 text-sm text-ink-3">
+        <p className="rounded-2xl border border-argilla/40 bg-argilla-tenue px-5 py-4 text-sm text-testo">
           {error}
         </p>
       )}
       {copied && (
-        <p className="rounded-xl border border-teal/30 bg-teal-dim px-5 py-4 text-sm text-ink-3">
+        <p className="rounded-2xl border border-salvia bg-salvia-chiara px-5 py-4 text-sm text-testo">
           Numeri di «{copied}» copiati negli appunti.
         </p>
       )}
@@ -132,11 +132,11 @@ export default function AdminPanel() {
       {tdbGroups.map((group) => {
         const rows = byGroup.get(group.id) ?? [];
         return (
-          <section key={group.id} className="rounded-2xl border border-line bg-white p-6">
+          <section key={group.id} className="rounded-[1.75rem] border border-linea bg-bianco p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="font-display text-lg font-semibold text-ink">
+              <h2 className="font-titolo text-lg font-semibold text-bosco">
                 {group.name}{" "}
-                <span className="font-mono text-xs font-normal text-muted">
+                <span className="text-xs font-normal text-tenue">
                   {group.unlimited
                     ? `${rows.length} famiglie`
                     : `${rows.length}/${group.capacity}`}
@@ -146,7 +146,7 @@ export default function AdminPanel() {
                 <button
                   type="button"
                   onClick={() => copyPhones(group.id, group.name)}
-                  className="rounded-md border border-line px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-ink-3 transition hover:border-ink/30"
+                  className="rounded-full border border-linea px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-testo transition hover:border-salvia"
                 >
                   Copia numeri
                 </button>
@@ -154,12 +154,12 @@ export default function AdminPanel() {
             </div>
 
             {rows.length === 0 ? (
-              <p className="mt-4 text-sm text-muted">Nessuna adesione.</p>
+              <p className="mt-4 text-sm text-tenue">Nessuna adesione.</p>
             ) : (
               <div className="mt-4 overflow-x-auto">
                 <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
                   <thead>
-                    <tr className="border-b border-line font-mono text-xs uppercase tracking-widest text-muted">
+                    <tr className="border-b border-linea text-xs font-bold uppercase tracking-[0.16em] text-tenue">
                       <th className="py-2 pr-4 font-normal">Nominativo</th>
                       <th className="py-2 pr-4 font-normal">Genitori</th>
                       <th className="py-2 pr-4 font-normal">Telefono</th>
@@ -169,15 +169,15 @@ export default function AdminPanel() {
                   </thead>
                   <tbody>
                     {rows.map((entry) => (
-                      <tr key={entry.id} className="border-b border-line/60 align-top">
-                        <td className="py-2.5 pr-4 text-ink">{entry.familyName}</td>
-                        <td className="py-2.5 pr-4 text-muted">
+                      <tr key={entry.id} className="border-b border-lineaa/60 align-top">
+                        <td className="py-2.5 pr-4 text-bosco">{entry.familyName}</td>
+                        <td className="py-2.5 pr-4 text-tenue">
                           {entry.parentNames ?? "—"}
                         </td>
-                        <td className="py-2.5 pr-4 font-mono text-xs text-ink-3">
+                        <td className="py-2.5 pr-4 font-mono text-xs text-testo">
                           {entry.preassigned ? "già assegnato" : entry.phone}
                         </td>
-                        <td className="py-2.5 pr-4 text-xs text-muted">
+                        <td className="py-2.5 pr-4 text-xs text-tenue">
                           {entry.claimedAt
                             ? new Date(entry.claimedAt).toLocaleString("it-IT", {
                                 day: "2-digit",
@@ -191,7 +191,7 @@ export default function AdminPanel() {
                           <button
                             type="button"
                             onClick={() => release(entry)}
-                            className="font-mono text-xs uppercase tracking-widest text-red-700 hover:underline"
+                            className="text-xs font-bold uppercase tracking-[0.16em] text-argilla hover:underline"
                           >
                             Libera
                           </button>

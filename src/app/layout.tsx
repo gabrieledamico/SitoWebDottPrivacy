@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Nunito } from "next/font/google";
 import "./globals.css";
+import SfondoVivo from "@/components/terra-dei-bambini/SfondoVivo";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  axes: ["SOFT"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -35,10 +29,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="it"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-body">
-        <main className="flex-1">{children}</main>
+      <body className="relative min-h-full flex flex-col bg-panna text-testo">
+        <SfondoVivo />
+        <main className="relative flex-1">{children}</main>
       </body>
     </html>
   );

@@ -1,39 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --color-paper: #faf8f4;
-  --color-paper-dim: #f1ede4;
-  --color-ink: #0e1a2b;
-  --color-ink-2: #16263d;
-  --color-ink-3: #24374f;
-  --color-line: #ddd6c7;
-  --color-line-dark: #2c3e57;
-  --color-amber: #d98c2b;
-  --color-amber-dim: #f2d9b3;
-  --color-teal: #0f8a82;
-  --color-teal-dim: #cfe9e6;
-  --color-body: #2c2a25;
-  --color-muted: #5c584d;
+  /* Bianco, panna, salvia: la tavolozza della Terra dei Bambini. */
+  --color-bianco: #ffffff;
+  --color-panna: #f7f3e8;
+  --color-panna-scura: #efe8d5;
+  --color-salvia: #9caf88;
+  --color-salvia-chiara: #d3dfc4;
+  --color-salvia-tenue: #e8eee0;
+  --color-salvia-scura: #6d8259;
+  --color-bosco: #38492f;
+  --color-testo: #414d38;
+  --color-tenue: #6f7a63;
+  --color-linea: #ded8c4;
+  --color-argilla: #c08457;
+  --color-argilla-tenue: #f2e2d3;
 }
 
 @theme inline {
-  --color-paper: var(--color-paper);
-  --color-paper-dim: var(--color-paper-dim);
-  --color-ink: var(--color-ink);
-  --color-ink-2: var(--color-ink-2);
-  --color-ink-3: var(--color-ink-3);
-  --color-line: var(--color-line);
-  --color-line-dark: var(--color-line-dark);
-  --color-amber: var(--color-amber);
-  --color-amber-dim: var(--color-amber-dim);
-  --color-teal: var(--color-teal);
-  --color-teal-dim: var(--color-teal-dim);
-  --color-body: var(--color-body);
-  --color-muted: var(--color-muted);
+  --color-bianco: var(--color-bianco);
+  --color-panna: var(--color-panna);
+  --color-panna-scura: var(--color-panna-scura);
+  --color-salvia: var(--color-salvia);
+  --color-salvia-chiara: var(--color-salvia-chiara);
+  --color-salvia-tenue: var(--color-salvia-tenue);
+  --color-salvia-scura: var(--color-salvia-scura);
+  --color-bosco: var(--color-bosco);
+  --color-testo: var(--color-testo);
+  --color-tenue: var(--color-tenue);
+  --color-linea: var(--color-linea);
+  --color-argilla: var(--color-argilla);
+  --color-argilla-tenue: var(--color-argilla-tenue);
 
-  --font-display: var(--font-space-grotesk);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-ibm-plex-mono);
+  --font-titolo: var(--font-fraunces);
+  --font-sans: var(--font-nunito);
 
   --container-content: 72rem;
 }
@@ -43,40 +43,108 @@ html {
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-body);
+  background: var(--color-panna);
+  color: var(--color-testo);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: var(--color-amber);
-  color: var(--color-ink);
-}
-
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(247, 245, 240, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(247, 245, 240, 0.06) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background: var(--color-salvia-chiara);
+  color: var(--color-bosco);
 }
 
 .text-balance {
   text-wrap: balance;
 }
 
+/* Trama leggerissima di puntini: dà "carta" allo sfondo panna. */
+.trama-carta {
+  background-image: radial-gradient(
+    rgba(109, 130, 89, 0.16) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .fade-up {
-    animation: fade-up 0.6s ease-out both;
+  /* L'albero respira, piano. */
+  .respira {
+    animation: respiro 7s ease-in-out infinite;
+    transform-origin: 50% 88%;
+  }
+
+  /* Foglie che si staccano dalla chioma e scendono. */
+  .foglia-cade {
+    animation: caduta 9s ease-in-out infinite;
+  }
+
+  .ondeggia {
+    animation: ondeggio 5.5s ease-in-out infinite;
+  }
+
+  .spunta {
+    animation: spuntata 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .cresce-barra {
+    animation: crescita 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
 
-@keyframes fade-up {
+@keyframes respiro {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.018) rotate(-0.4deg);
+  }
+}
+
+@keyframes caduta {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--deriva, 30px), var(--discesa, 190px))
+      rotate(var(--giro, 220deg));
+  }
+}
+
+@keyframes ondeggio {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1.5deg);
+  }
+}
+
+@keyframes spuntata {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px) scale(0.97);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes crescita {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }

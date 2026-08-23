@@ -21,6 +21,18 @@ Next.js 16 (App Router) + Tailwind CSS v4, dati su Postgres.
 Gruppi, capienze, testi e posti già assegnati stanno in
 `src/lib/terra-dei-bambini/config.ts`: si modificano lì, senza toccare altro.
 
+## Grafica
+
+Bianco, panna e verde salvia; caratteri Fraunces (titoli) e Nunito (testo).
+Lo sfondo è vivo: `SfondoVivo.tsx` disegna su canvas foglie che scendono piano,
+scansano il dito o il cursore e si moltiplicano a ogni tocco. Con
+`prefers-reduced-motion` il prato resta fermo, disegnato una volta sola.
+
+Il logo dell'associazione è `public/terra-dei-bambini.webp`, ricavato da una
+foto del disegno: fondo reso trasparente e ritagliato. Se arriva il file
+originale dall'associazione basta sostituirlo mantenendo lo stesso nome (le
+proporzioni indicate in `AlberoAnimato.tsx` sono 820x789).
+
 Nulla è indicizzabile: `robots.txt` blocca tutto e ogni pagina è `noindex`.
 
 ## Sviluppo

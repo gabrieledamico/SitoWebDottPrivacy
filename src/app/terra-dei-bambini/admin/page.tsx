@@ -20,16 +20,16 @@ export default async function TerraDeiBambiniAdminPage() {
 
   return (
     <Container className="py-16 lg:py-20">
-      <p className="font-mono text-xs uppercase tracking-widest text-muted">
+      <p className="text-xs font-bold uppercase tracking-[0.16em] text-tenue">
         La Terra dei Bambini · banca ore 2026/2027
       </p>
-      <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink">
+      <h1 className="mt-3 font-titolo text-3xl font-semibold tracking-tight text-bosco">
         Gestione delle adesioni
       </h1>
 
       <div className="mt-10">
         {!configured ? (
-          <p className="rounded-xl border border-amber/40 bg-amber-dim px-5 py-4 text-sm text-ink-3">
+          <p className="rounded-2xl border border-argilla/40 bg-argilla-tenue px-5 py-4 text-sm text-testo">
             Mancano <code className="font-mono">DATABASE_URL</code> o{" "}
             <code className="font-mono">TDB_ADMIN_PASSWORD</code>.
           </p>
