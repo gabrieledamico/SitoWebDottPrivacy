@@ -112,6 +112,16 @@ async function initSchema() {
     [groupIds, slotIndexes]
   );
 
+  // Un gruppo tolto dalla configurazione lascerebbe i suoi posti nell'archivio:
+  // qui vengono rimossi, ma solo se nessuno li ha occupati. Un'adesione non
+  // viene mai cancellata di nascosto: se un gruppo sparisce con dentro delle
+  // famiglie, le loro righe restano e si vedono nell'export.
+  await query(
+    `DELETE FROM tdb_slots
+     WHERE claimed_at IS NULL AND NOT (group_id = ANY($1::text[]))`,
+    [tdbGroups.map((group) => group.id)]
+  );
+
   // Posti assegnati fuori dalla pagina (es. consiglio direttivo già nominato).
   for (const group of tdbGroups) {
     if (!group.preassigned?.length) continue;

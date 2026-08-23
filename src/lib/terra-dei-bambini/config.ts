@@ -79,9 +79,13 @@ export const tdbGroups: TdbGroup[] = [
   },
   {
     id: "discarica",
-    name: "Discarica",
+    name: "Trasporto materiali e discarica",
     capacity: 1,
-    tasks: ["Conferimento dei rifiuti in discarica / isola ecologica."],
+    tasks: [
+      "Conferimento dei rifiuti in discarica e all'isola ecologica.",
+      "Trasporto di materiali per l'associazione: acquisti ingombranti, mobili da montare, materiale per le feste.",
+      "Capita di dover spostare cose voluminose: è preferibile avere a disposizione un mezzo adatto, tipo un furgoncino.",
+    ],
   },
   {
     id: "feste-giardino-aperto",
@@ -91,15 +95,6 @@ export const tdbGroups: TdbGroup[] = [
       "Organizzazione delle feste dell'associazione e del progetto parentale (Natale, fine anno, altro): cibo, attività, eventi, eventuali raccolte.",
       "Organizzazione e gestione del giardino aperto: raccolta delle disponibilità, regole, passaggio delle chiavi.",
       "Preparazione degli spazi per le assemblee.",
-    ],
-  },
-  {
-    id: "referenti-famiglie",
-    name: "Referenti delle famiglie",
-    capacity: 3,
-    tasks: [
-      "Rappresentanza dei genitori nei confronti dell'associazione.",
-      "Raccordo tra le famiglie, le maestre e l'organizzazione.",
     ],
   },
   {
