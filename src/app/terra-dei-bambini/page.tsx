@@ -87,8 +87,63 @@ export default async function TerraDeiBambiniPage() {
             </div>
           )}
         </Container>
+
+        <PiedePagina />
       </div>
     </>
+  );
+}
+
+const EMAIL_ASSISTENZA = "gdamico@dottprivacy.it";
+
+/** Dati dell'associazione, come da visura: nome, codici, sede e recapito. */
+const associazione = {
+  nome: "La Terra dei Bambini APS",
+  piva: "IT 07186860966",
+  cf: "92040280155",
+  runts: "47235",
+  indirizzo: "Via Don Carlo Gnocchi 2, 20023 Cerro Maggiore (MI)",
+  telefono: "+39 351 935 53 56",
+};
+
+function PiedePagina() {
+  return (
+    <footer className="border-t border-linea/70 bg-panna/60">
+      <Container className="flex flex-col items-center gap-3 py-9 text-center">
+        <p className="font-titolo text-base font-semibold text-bosco">
+          {associazione.nome}
+        </p>
+
+        <p className="text-xs leading-relaxed text-tenue">
+          P.IVA {associazione.piva}
+          <span aria-hidden className="mx-2 text-salvia">·</span>
+          CF {associazione.cf}
+          <span aria-hidden className="mx-2 text-salvia">·</span>
+          Iscritta al RUNTS n. {associazione.runts}
+        </p>
+
+        <p className="text-xs leading-relaxed text-tenue">
+          {associazione.indirizzo}
+          <span aria-hidden className="mx-2 text-salvia">·</span>
+          <a
+            href={`tel:${associazione.telefono.replace(/\s/g, "")}`}
+            className="transition hover:text-bosco"
+          >
+            {associazione.telefono}
+          </a>
+        </p>
+
+        <p className="mt-2 max-w-xl text-xs leading-relaxed text-tenue">
+          Per problemi tecnici relativi alla presente piattaforma inviare una mail a{" "}
+          <a
+            href={`mailto:${EMAIL_ASSISTENZA}`}
+            className="font-bold text-salvia-scura underline underline-offset-2 transition hover:text-bosco"
+          >
+            {EMAIL_ASSISTENZA}
+          </a>
+        </p>
+      </Container>
+    </footer>
   );
 }
 
